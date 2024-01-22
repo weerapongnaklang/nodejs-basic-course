@@ -13,10 +13,20 @@ const userDatabase = {
 
 app.get("/users/:userId", (req, res) => {
   // 1. Implement: returns "User ID: [NUMBER] (name: [NAME])"
+  const userId = req.params.userId;
+  const name = userDatabase[userId];
+  res.send(`User ID: ${userId} name: ${name}`);
 });
 
 app.post("/users/:userId", (req, res) => {
   // 2. Implement: returns "User ID: [NUMBER], name has been updated to [NAME]".
+  const userId = req.params.userId;
+  const name = req.body.name;
+  // update Database
+  userDatabase[userId] = name;
+
+  // send
+  res.send(`User ID: ${userId}, name has been update to ${name}`);
 });
 
 app.listen(port, () => {
