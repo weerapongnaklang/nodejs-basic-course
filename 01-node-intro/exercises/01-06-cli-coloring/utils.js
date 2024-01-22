@@ -1,4 +1,5 @@
 import fs from "fs";
+import clc from 'cli-color';
 
 const filePath = "data.txt";
 
@@ -9,7 +10,7 @@ export function write(input) {
 
 export function read() {
   const content = fs.readFileSync(filePath, "utf-8");
-  console.log("file content:");
+  console.log(clc.bgYellowBright(clc.blue.bold("file content:")));
   console.log(content);
 }
 
