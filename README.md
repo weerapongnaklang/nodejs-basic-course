@@ -14,6 +14,7 @@ git clone git@github.com:scallops-cloud/nodejs-basic-course.git
 2. Checkout a new branch to work on, to avoid the conflict with the new workshop update. (You may use other branch name you prefer.)
 
 ```
+cd nodejs-basic-course
 git checkout -b exercise-work
 ```
 
@@ -74,7 +75,8 @@ https://github.com/scallops-cloud/nodejs-basic-course/tree/main/05-crud-rest-api
 #### 📽️ Slides:
 
 - [AUTH-1: Encryption & Hashing](https://snappify.com/view/8923e6d8-59de-4941-b4f6-eab8bcce45fe)
-- [AUTH-2: Intro to Express.js Authentication](https://snappify.com/view/0bd6802a-c2b2-4b1b-890d-385f4fc9fe32)
+- [AUTH-2: Intro to Express.js Authentication](https://snappify.com/view/0bd6802a-c2b2-4b1b-890d-385f4fc9fe32) for exercise 06-01 & 06-02
+- [AUTH-3: JWT & Protected Routes](https://snappify.com/view/b53fd2ec-082a-457f-b65e-234c2b09ef6a) for exercise 06-03 & 06-04
 
 #### 🧪 Workshop
 
@@ -124,4 +126,39 @@ git checkout exercise-work
 
 ```sh
 git merge main
+```
+
+## How to push working branch to your own repository?
+
+1. Fork this repository to your own account.
+
+2. Check the remote repository.
+
+```sh
+git remote -v
+```
+
+Expected result:
+
+```sh
+origin  git@github.com:scallops-cloud/nodejs-basic-course.git (fetch)
+origin  git@github.com:scallops-cloud/nodejs-basic-course.git (push)
+```
+
+3. Add your own repository as a remote repository.
+
+```sh
+git remote add myrepo YOUR_GITHUB_REPO_URL
+```
+
+For example:
+
+```sh
+git remote add myrepo git@github.com:turboza/nodejs-basic-course.git
+```
+
+4. Push the working branch to your own repository.
+
+```sh
+git push myrepo exercise-work
 ```

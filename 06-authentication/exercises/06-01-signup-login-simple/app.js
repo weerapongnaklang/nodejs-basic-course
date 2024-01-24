@@ -13,41 +13,37 @@ app.use(morgan("dev"));
 
 app.post("/signup", (req, res) => {
   // 🍎 Implement: 2.1. Retrieve `email` and `password` from request.
-  const {email,password} = req.body
+
 
   // Check if user already exists
   const existingUser = User.findOne({ email });
   //  🍎 Implement: 2.2. If the user already exists,
   //     return 400 error with the message "user already exists".
-  if (existingUser) {
-    return res.status(400).json({ error: { message: "user already exists" } });
-  }
+
 
   // Store new user in database
   const user = new User({ email, password });
   user.save();
 
   //  🍎 Implement: 2.3. Return json in this format if successfully signup
-  res.json({
-    data: {
-      email: user.email,
-    },
-  });
+  // {
+  //   "data": {
+  //     "email": "email@sample.com"
+  //   }
+  // }
+
 });
 
 app.post("/login", (req, res) => {
   // 🍎 Implement: 3.1. Retrieve `email` and `password` from request.
-  const { email, password } = req.body;
+
+
   // Fetch user from database
 
   const user = User.findOne({ email });
   // 🍎 Implement: 3.2. If no user found, return 400 error with
   //    the message "Invalid email or password"
-  if (!user) {
-    return res
-      .status(400)
-      .send({ error: { message: "Invalid email or password" } });
-  }
+
 
   // Check password
   // 🍎 Implement: 3.3. check if password is correct by
