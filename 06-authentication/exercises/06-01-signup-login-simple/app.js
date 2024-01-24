@@ -13,7 +13,9 @@ app.use(morgan("dev"));
 
 app.post("/signup", (req, res) => {
   // 🍎 Implement: 2.1. Retrieve `email` and `password` from request.
-
+  const email = req.body.email
+  const password = req.body.password
+  // const {email,password} = req.body
 
   // Check if user already exists
   const existingUser = User.findOne({ email });
