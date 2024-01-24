@@ -12,7 +12,7 @@ export const auth = (req, res, next) => {
 
   try {
     // 🍎 Implement: 2.1. Use `jwt.verify(...)` to verify the token.
-    const decoded = "Replace this with your code";
+    const decoded = jwt.verify(token, jwtSecretKey);
     req.user = decoded;
     next();
   } catch (err) {
