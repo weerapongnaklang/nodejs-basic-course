@@ -9,6 +9,13 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static("public"));
 app.use(loggingMiddleware);
+app.use((req, res, next) => {
+  const time = new Date();
+  console.log(time, req.method, req.originalUrl);
+
+  next();
+});
+
 
 // user database variable here:
 const userDatabase = {
