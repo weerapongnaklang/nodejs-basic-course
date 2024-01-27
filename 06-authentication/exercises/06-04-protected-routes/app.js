@@ -82,7 +82,7 @@ app.get("/secret", auth, (req, res) => {
   res.json({ data: { message: "Welcome to the secret area." } });
 });
 
-app.get("/public", auth, (req, res) => {
+app.get("/public",  (req, res) => {
   res.json({ data: { message: "Welcome to the public area." } });
 });
 
