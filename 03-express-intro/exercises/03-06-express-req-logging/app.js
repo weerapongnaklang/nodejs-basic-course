@@ -1,5 +1,6 @@
 import express from "express";
 import { isValidName } from "./utils.js";
+import loggingMiddleware from "./loggingMiddleware.js";
 
 const app = express();
 const port = 8000;
@@ -7,6 +8,12 @@ const port = 8000;
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static("public"));
+app.use((req, res, next) => {
+  const currentTime = new Date();
+  console.log(currentTime, req.method, req.originalUrl);
+
+  next();
+});
 
 // Create middle ware
 // 1)
@@ -19,7 +26,7 @@ app.use(express.static("public"));
 
 // 2)
 // function loggingMiddleware(){
-//   returnc (req, res , next) =>{
+//   return (req, res , next) =>{
 // //   console.log("new", new Date(), req.method, req.originalUrl);
 
 // //   next();
