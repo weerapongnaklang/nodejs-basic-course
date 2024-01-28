@@ -9,6 +9,9 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static("public"));
 app.use(loggingMiddleware);
+app.use(morgan("dev"));
+app.use(helmet());
+// middleware: Morgan(log middleware) , helmet(security)
 
 // user database variable here:
 const userDatabase = {
