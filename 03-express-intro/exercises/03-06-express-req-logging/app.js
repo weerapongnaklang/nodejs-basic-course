@@ -8,6 +8,25 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static("public"));
 
+// Create middle ware
+// 1)
+// app.use((req, res , next) =>{
+//   console.log("new", new Date(), req.method, req.originalUrl);
+
+//   next();
+//   )
+// })
+
+// 2)
+// function loggingMiddleware(){
+//   returnc (req, res , next) =>{
+// //   console.log("new", new Date(), req.method, req.originalUrl);
+
+// //   next();
+// //   )
+// // })
+// }
+
 // user database variable here:
 const userDatabase = {
   20: "Manee",
