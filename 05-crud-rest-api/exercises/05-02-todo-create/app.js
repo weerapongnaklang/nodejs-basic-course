@@ -25,17 +25,20 @@ app.get("/todos/:todoId", (req, res) => {
 });
 
 app.post("/todos", (req, res) => {
+  // 1. Read req body
   const { title, description } = req.body;
 
+  // 2.Validation
+
+  // 3.Bussiness logic
   // Create a new todo using the `createTodo` function (imported from the model, line: 2)
-  // const todo = ...
+  const todo = createTodo({ title, description });
 
+  //  4. Return
   // Return the newly created todo with a 201 status code
-  // res.status(201).json({
-  //   data: todo,
-  // });
-
-  throw new Error("Not implemented");
+  res.status(201).json({
+    data: todo,
+  });
 });
 
 app.listen(port, () => {

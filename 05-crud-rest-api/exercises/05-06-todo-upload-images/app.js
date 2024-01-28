@@ -21,6 +21,8 @@ const storage = multer.diskStorage({
     cb(null, filename);
   },
 });
+
+// library multer use to upload image
 const upload = multer({ storage });
 
 const app = express();
@@ -37,13 +39,16 @@ app.use(express.static("public"));
  */
 app.patch("/todos/:todoId/uploads", upload.single("image"), (req, res) => {
   const { filename } = req.file;
+  const todo = updateTodo(parseInt(req.params.todoId, 10), {
+    imagePath: `/uploads/${filename}`,
+  });
+  res.json(todo);
   /**
    * 1. Get the todoId from the request parameters
    * 2. Update the todo with the imagePath `/uploads/${filename}`
    * 3. If the todo is not found, return a 404 error
    * 4. Return the updated todo
    */
-  throw new Error("Not implemented");
 });
 
 app.get("/todos", (req, res) => {

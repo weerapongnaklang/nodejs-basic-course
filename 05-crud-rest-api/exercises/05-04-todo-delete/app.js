@@ -5,6 +5,7 @@ import {
   createTodo,
   updateTodo,
   deleteTodo,
+  deleteTodo,
 } from "../05-99-model/todo.mjs";
 
 const app = express();
@@ -91,7 +92,11 @@ app.delete("/todos/:todoId", (req, res) => {
    * 4. If `deleteTodo` returns `undefined`, return 404
    * 5. Else, return 200 success
    */
-  throw new Error("Not implemented");
+  const todoID = parseInt(req.params.todoId, 10);
+  const deleteTodo = deleteTodo(todoID);
+
+  res.status(404).json({ error: { message: "undefine" } });
+  return;
 });
 
 app.listen(port, () => {

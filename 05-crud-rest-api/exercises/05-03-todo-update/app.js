@@ -54,32 +54,32 @@ app.put("/todos/:todoId", (req, res) => {
   const id = parseInt(req.params.todoId, 10);
 
   // Read title and description from req.body
-  // const { title, description, isDone } = ...
+  const { title, description, isDone } = req.body
 
   // Update todo with `updateTodo`
   // Hint: updateTodo accepts 2 arguments, id and attributes
   //
-  // const updatedTodo = updateTodo(...);
+  const updatedTodo = updateTodo(id , { title, description , isDone});
 
   // Return the updated todo
-  // res.status(200).json({ data: updatedTodo });
+  res.status(200).json({ data: updatedTodo });
 
-  throw new Error("Not implemented");
+  
 });
 
 app.patch("/todos/:todoId", (req, res) => {
   const id = parseInt(req.params.todoId, 10);
 
   // Read request body and store it in `attributes` variable
-  // const attributes = ...
+  const attributes = req.body
 
   // Update todo with `updateTodo`
-  // const updatedTodo = ...
+  const updatedTodo = updateTodo(id , attributes)
 
   // Return the updated todo
-  // res.status(200).json({ data: updatedTodo });
+  res.status(200).json({ data: updatedTodo });
 
-  throw new Error("Not implemented");
+  
 });
 
 app.listen(port, () => {

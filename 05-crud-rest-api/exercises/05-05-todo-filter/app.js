@@ -16,20 +16,40 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/todos", (req, res) => {
   const query = req.query;
   const filters = Object.entries(query).map(([key, value]) => {
+    // key = 'isDone'
+    // value =' false'
+// Round 1
+// [ [ 'isDone, 'false'], [ 'title', 'yo'] ]
+// 
+//  .map
+// 
+// Round 2
+// [['title', 'yo']]
+// 
+// .map
+// [[todo] => todo.isDone.toString() === value, (todo) => value.includes(todo.title)]
+// 
+
     switch (key) {
       // compare todo.id with the object's value based on the key
       case "id":
         return (todo) => {
           // Hint: use parseInt() to convert string to number
+          todo.id === parseInt(value, 10)
         };
       case "isDone":
         return (todo) => {
           // Hint: use === to compare boolean values
           // This is a tricky one, because the query string is a string,
+
+          // todo.isDone = false
+          // value = 'false'
+          return todo.isDone.toString() === value;
         };
       case "title":
         return (todo) => {
           // Hint: use includes() to check if the string includes the value
+        return value.includes(todo.title);
         };
       case "description":
         return (todo) => {
