@@ -6,6 +6,7 @@ const port = 8000;
 
 app.get("/todos", (req, res) => {
   const todos = listTodos();
+  // listTodos เป็น list 
 
   // 1. Implement: returns a list of todos
   res.json({
